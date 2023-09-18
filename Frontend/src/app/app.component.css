@@ -59,7 +59,6 @@ body {
   .header .menu-icon {
     cursor: pointer;
     display: inline-block;
-    
     padding: 28px 20px;
     position: relative;
     user-select: none;

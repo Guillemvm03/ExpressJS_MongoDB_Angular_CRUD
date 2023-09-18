@@ -67,18 +67,29 @@
 
 
 
-<div>
+<!-- <div>
   <ul id="product">
     Product List
     <br><br>
     <li
     class="list-group-item"
-    *ngFor="let product of product; let i = index"
+    *ngFor="let product of products; let i = index"
     [class.active]="i == currentIndex"
     (click)="setActiveProduct(product, i)"
   >
     {{ product.product_name }}
   </li>
+  </ul>
+</div> -->
+
+
+<div>
+  <ul id="product">
+    Product List
+    <br><br>
+    <li class="list-group-item" *ngFor="let product of products; let i = index">
+      <app-product-card [value]="product"></app-product-card>
+    </li>
   </ul>
 </div>
 

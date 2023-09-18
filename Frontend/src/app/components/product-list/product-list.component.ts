@@ -1,7 +1,7 @@
 
 
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/models/product.model';
+import { Products } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -11,8 +11,8 @@ import { ProductService } from 'src/app/services/product.service';
 })
 
 export class ProductListComponent {
-  product?: Product[];
-  currentproduct: Product = {};
+  products?: Products[];
+  currentproduct: Products = {};
   currentIndex = -1;
   title = '';
 
@@ -25,7 +25,7 @@ export class ProductListComponent {
   retrieveProduct(): void {
     this.productService.getAll().subscribe({
       next: (data) => {
-        this.product = data;
+        this.products = data;
         console.log(data);
       },
       error: (e) => console.error(e)
@@ -38,7 +38,7 @@ export class ProductListComponent {
     this.currentIndex = -1;
   }
 
-  setActiveProduct(product: Product, index: number): void {
+  setActiveProduct(product: Products, index: number): void {
     this.currentproduct = product;
     this.currentIndex = index;
   }

@@ -1,4 +1,4 @@
-// console.log("hola");
+
 
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product.model';

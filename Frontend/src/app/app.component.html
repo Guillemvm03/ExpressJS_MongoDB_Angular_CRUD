@@ -1,4 +1,23 @@
 <div>
+  <header class="header">
+
+    <a href="" class="logo">CRUD</a>
+    <input class="menu-btn" type="checkbox" id="menu-btn" />
+    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+    <ul class="menu">
+      <li><a routerLink="product">Products</a></li>
+      <li><a routerLink="add">Add</a></li>
+
+    </ul>
+
+  </header>
+  <br><br><br>
+  <div class="container mt-3">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<!-- <div>
   <nav class="navbar navbar-expand navbar-dark bg-dark">
     <a href="#" class="navbar-brand">WillyPOV</a>
     <div class="navbar-nav mr-auto">
@@ -14,4 +33,4 @@
   <div class="container mt-3">
     <router-outlet></router-outlet>
   </div>
-</div>
+</div> -->

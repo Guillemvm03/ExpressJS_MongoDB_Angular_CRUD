@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Product } from '../models/product.model';
+import { Products } from '../models/product.model';
 
 const baseUrl = 'http://localhost:8080/api/products';
 
@@ -12,12 +12,12 @@ const baseUrl = 'http://localhost:8080/api/products';
 export class ProductService {
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<Product[]> {
-    return this.http.get<Product[]>(baseUrl);
+  getAll(): Observable<Products[]> {
+    return this.http.get<Products[]>(baseUrl);
   }
 
-  get(id: any): Observable<Product> {
-    return this.http.get<Product>(`${baseUrl}/${id}`);
+  get(id: any): Observable<Products> {
+    return this.http.get<Products>(`${baseUrl}/${id}`);
   }
 
   // create(data: any): Observable<any> {
@@ -36,7 +36,7 @@ export class ProductService {
   //   return this.http.delete(baseUrl);
   // }
 
-  // findByTitle(title: any): Observable<Product[]> {
-  //   return this.http.get<Product[]>(`${baseUrl}?title=${title}`);
-  // }
+  findByTitle(title: any): Observable<Products[]> {
+    return this.http.get<Products[]>(`${baseUrl}?title=${title}`);
+  }
 }

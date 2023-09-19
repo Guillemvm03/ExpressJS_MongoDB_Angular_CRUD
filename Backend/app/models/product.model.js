@@ -1,3 +1,5 @@
+// const slug = requiere('slug')
+
 module.exports = mongoose => {
     var schema = mongoose.Schema(
     {

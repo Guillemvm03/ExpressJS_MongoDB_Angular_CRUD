@@ -95,26 +95,26 @@ exports.update = (req, res) => {
 }
 
 exports.deleteOne = (req, res) => {
-    // Eliminar un producto con el slug indicado en la peticion
-    const slug = req.params.slug;
+  // Eliminar un producto con el slug indicado en la peticion
+  const slug = req.params.slug;
 
-    Product.findOneAndDelete({ slug: slug }, { useFindAndModify: false })
-      .then(data => {
-        if (!data) {
-          res.status(404).send({
-            message: `No se pudo eliminar el producto con la slug: ${slug}. Es posible que el producto no se haya encontrado`
-          });
-        } else {
-          res.send({
-            message: "El producto fue eliminado con exito"
-          });
-        }
-      })
-      .catch(err => {
-        res.status(500).send({
-          message: "No se pudo eliminar el producto con el slug:" + slug
+  Product.findOneAndDelete({ slug: slug }, { useFindAndModify: false })
+    .then(data => {
+      if (!data) {
+        res.status(404).send({
+          message: `No se pudo eliminar el producto con la slug: ${slug}. Es posible que el producto no se haya encontrado`
         });
+      } else {
+        res.send({
+          message: "El producto fue eliminado con exito"
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "No se pudo eliminar el producto con el slug:" + slug
       });
+    });
 
 
 }

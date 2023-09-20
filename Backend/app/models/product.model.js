@@ -34,3 +34,4 @@ module.exports = mongoose => {
     const Product = mongoose.model("product", schema);
     return Product;
 }
+

@@ -95,7 +95,7 @@ exports.update = (req, res) => {
 }
 
 exports.deleteOne = (req, res) => {
-    // Eliminar un producto con el id indicado en la peticion
+    // Eliminar un producto con el slug indicado en la peticion
     const slug = req.params.slug;
 
     Product.findOneAndDelete({ slug: slug }, { useFindAndModify: false })

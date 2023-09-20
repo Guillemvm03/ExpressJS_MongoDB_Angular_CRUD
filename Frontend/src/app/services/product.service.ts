@@ -36,7 +36,7 @@ export class ProductService {
   //   return this.http.delete(baseUrl);
   // }
 
-  findByTitle(title: any): Observable<Product[]> {
-    return this.http.get<Product[]>(`${baseUrl}?title=${title}`);
-  }
+//   findByTitle(title: any): Observable<Products[]> {
+//     return this.http.get<Products[]>(`${baseUrl}?title=${title}`);
+//   }
 }

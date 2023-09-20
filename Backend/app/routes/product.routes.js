@@ -10,13 +10,13 @@ module.exports = (app) => {
     router.get('/', products.findAll);
 
     // Mostrar un solo producto
-    router.get('/:id', products.findOne);
+    router.get('/:slug', products.findOne);
 
     // Actualizar la informacion de un producto
-    router.put('/:id', products.update);
+    router.put('/:slug', products.update);
 
     // Eliminar un producto
-    router.delete('/:id', products.deleteOne);
+    router.delete('/:slug', products.deleteOne);
 
     // Eliminar todos los productos
     router.delete('/', products.deleteAll);

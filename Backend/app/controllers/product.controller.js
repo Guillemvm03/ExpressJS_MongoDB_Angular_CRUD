@@ -51,19 +51,19 @@ exports.findAll = (req, res) => {
 }
 
 exports.findOne = (req, res) => {
-    // Encontrara un producto con el id indicado en la peticion
-    const id = req.params.id;
+    // Encontrara un producto con la slug indicada en la peticion
+    const slug = req.params.slug;
 
-    Product.findById(id)
+    Product.findOne({ slug: slug })
       .then(data => {
         if (!data)
-          res.status(404).send({ message: "No se ha encontrado el producto con la id: " + id });
+          res.status(404).send({ message: "No se ha encontrado el producto con la slug: " + slug });
         else res.send(data);
       })
       .catch(err => {
         res
           .status(500)
-          .send({ message: "Ha ocurrido un error buscando el producto con la id:" + id });
+          .send({ message: "Ha ocurrido un error buscando el producto con la slug:" + slug });
       });
 
 }
@@ -76,33 +76,33 @@ exports.update = (req, res) => {
         });
       }
     
-      const id = req.params.id;
+      const slug = req.params.slug;
     
-      Product.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+      Product.findOneAndUpdate({ slug: slug }, req.body, { useFindAndModify: false })
         .then(data => {
           if (!data) {
             res.status(404).send({
-              message: `No se pudo actualizar el producto con el id: ${id}. Es posible que el producto no exista`
+              message: `No se pudo actualizar el producto con el slug: ${slug}. Es posible que el producto no exista`
             });
           } else res.send({ message: "La informacion del producto fue actualizada correctamente." });
         })
         .catch(err => {
           res.status(500).send({
-            message: "Error al actualizar la informacion del producto con el id:" + id
+            message: "Error al actualizar la informacion del producto con el slug:" + slug
           });
         });
 
 }
 
 exports.deleteOne = (req, res) => {
-    // Eliminar un producto con el id indicado en la peticion
-    const id = req.params.id;
+    // Eliminar un producto con el slug indicado en la peticion
+    const slug = req.params.slug;
 
-    Product.findByIdAndRemove(id, { useFindAndModify: false })
+    Product.findOneAndDelete({ slug: slug }, { useFindAndModify: false })
       .then(data => {
         if (!data) {
           res.status(404).send({
-            message: `No se pudo eliminar el producto con la id: ${id}. Es posible que el producto no se haya encontrado`
+            message: `No se pudo eliminar el producto con la slug: ${slug}. Es posible que el producto no se haya encontrado`
           });
         } else {
           res.send({
@@ -112,7 +112,7 @@ exports.deleteOne = (req, res) => {
       })
       .catch(err => {
         res.status(500).send({
-          message: "No se pudo eliminar el producto con el id:" + id
+          message: "No se pudo eliminar el producto con el slug:" + slug
         });
       });
 

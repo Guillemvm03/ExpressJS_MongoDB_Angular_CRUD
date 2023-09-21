@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Products } from '../models/product.model';
 
 const baseUrl = 'http://localhost:8080/api/products';
@@ -11,6 +11,19 @@ const baseUrl = 'http://localhost:8080/api/products';
 })
 export class ProductService {
   constructor(private http: HttpClient) {}
+
+  private ListaProductos = new BehaviorSubject<Products[]>([]);
+
+  readonly productos = this.ListaProductos.asObservable;
+
+
+  get products(): Products[] {
+    return this.ListaProductos.getValue();
+  }
+
+  set products(data: Products[]) {
+    this.ListaProductos.next(data);
+  }
 
   getAll(): Observable<Products[]> {
     return this.http.get<Products[]>(baseUrl);

@@ -28,7 +28,7 @@ export class ProductCardComponent implements OnInit {
         this.toastrService.success("This product has been removed")
         
       },//next
-      error: (e) => this.toastrService.error("Can't remove this product")
+      // error: (e) => this.toastrService.error("Can't remove this product")
       
     })
     

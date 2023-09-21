@@ -1,13 +1,15 @@
 const express = require ('express');
 const cors = require ('cors');
+const dotenv = require('dotenv')
 // const bodyParser = require ('body-parser'); /* deprecated */ quiere decir que ya no tiene soporte disponible
-
+dotenv.config();
 // Creamos la app
 const app = express();
 
 // Conectamos con Angular
 var corsOptions = {
-    origin: "http://localhost:4200"
+    origin: process.env.CORS_URL 
+    // || "http://localhost:4200"
 }
 
 app.use(cors(corsOptions));
@@ -41,7 +43,8 @@ app.get("/", (req, res) => {
 require("./app/routes/product.routes.js")(app);
 
 // Puerto seleccionado para la conexion
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT; 
+// || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });

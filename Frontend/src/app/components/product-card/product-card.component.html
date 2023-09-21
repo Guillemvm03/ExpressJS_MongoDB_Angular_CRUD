@@ -1,6 +1,9 @@
 <div>
-    <h1>{{ value?.product_name }}</h1>
+    <h1>{{ currentProduct?.product_name }}</h1>
     <!--<button>Update</button>-->
-    <button type="submit" (click)="updateProduct()">Update</button>
-    <button type="submit" (click)="deleteProduct()">Delete</button>
+    <button type="submit" routerLink="update/{{ currentProduct?.id }}">Update</button>
+
+    
+
+    <button type="submit" (click)="deleteProduct( currentProduct?.id )">Delete</button>
 </div>

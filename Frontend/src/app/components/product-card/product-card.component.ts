@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Products } from 'src/app/models/product.model';
+import { ProductService } from 'src/app/services/product.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-card',
@@ -9,17 +11,29 @@ import { Products } from 'src/app/models/product.model';
 
 
 export class ProductCardComponent implements OnInit {
-  @Input() value: Products | undefined;
-  constructor () {}
+  @Input() currentProduct: Products | undefined;
+
+  constructor (private productService: ProductService,
+     private toastrService: ToastrService) {}
 
   ngOnInit(): void {}
 
-  updateProduct(): void {
-    console.log('actualizando producto')
-  }
-
-  deleteProduct(): void {
+  deleteProduct(id: string): void {
     console.log('eliminando Producto');
+
+    this.productService.delete(id).subscribe({
+      next: data => {
+
+        this.productService.products = this.productService.products.filter(p => p.id !== this.currentProduct?.id)
+        this.toastrService.success("This product has been removed")
+        
+      },//next
+      // error: (e) => this.toastrService.error("Can't remove this product")
+      
+    })
+    
+
+
     
   }
 }

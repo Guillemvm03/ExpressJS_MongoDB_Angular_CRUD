@@ -88,7 +88,7 @@
     Product List
     <br><br>
     <li class="list-group-item" *ngFor="let product of products; let i = index">
-      <app-product-card [value]="product"></app-product-card>
+      <app-product-card [currentProduct]="product"></app-product-card>
     </li>
   </ul>
 </div>

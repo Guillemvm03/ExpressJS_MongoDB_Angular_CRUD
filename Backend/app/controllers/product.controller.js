@@ -54,7 +54,7 @@ exports.findOne = async function findOne_Product(req, res) {
   try {
   // Encontrara un producto con la slug indicada en la peticion
   const slug = req.params.slug;
-  const product = await Product.findOne({ slug: slug })
+  const product = await Product.findOne({ id : slug })
 
     if (!product) {
       res.status(404).send({ message: "No se ha encontrado el producto con la slug: " + slug });
@@ -78,7 +78,7 @@ exports.update = async function update_product(req, res) {
     }
 
     const slug = req.params.slug;
-    const product = await Product.findOneAndUpdate({ slug: slug }, req.body, { useFindAndModify: false });
+    const product = await Product.findOneAndUpdate({ id : slug }, req.body, { useFindAndModify: false });
 
     if (!product) {
       return res.status(404).send({
@@ -100,7 +100,7 @@ exports.deleteOne = (req, res) => {
   // Eliminar un producto con el slug indicado en la peticion
   const slug = req.params.slug;
 
-  Product.findOneAndDelete({ slug: slug }, { useFindAndModify: false })
+  Product.findOneAndDelete({ id : slug }, { useFindAndModify: false })
     .then(data => {
       if (!data) {
         res.status(404).send({
